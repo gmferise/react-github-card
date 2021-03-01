@@ -7,7 +7,6 @@ import NameForm from './comps/NameForm';
 import GithubCard from './comps/GithubCard';
 
 function App() {
-  const [visible, setVisibility] = useState(false);
   const [form, setForm] = useState({ name: '' });
   return (
     <div className="App">

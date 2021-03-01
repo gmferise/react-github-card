@@ -68,3 +68,5 @@ Author: Gavin Ferise
 
 References: 
 * https://upmostly.com/tutorials/how-to-use-the-usecontext-hook-in-react
+* https://react-bootstrap.github.io/components/forms/#forms-validation
+* Regex in NameForm.js based on https://github.com/shinnn/github-username-regex
