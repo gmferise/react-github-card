@@ -4,6 +4,6 @@ const Form = createContext([{}, () => {}]);
 
 const Context = {
   Form,
-};
+}
 
 export default Context;

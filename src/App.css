@@ -1,1 +1,12 @@
+.App {
+  padding: 1rem;
+}
 
+.profile-img {
+  border-radius: 100%;
+  max-width: 16rem;
+}
+
+.container > .row:not(:last-child) {
+  margin-bottom: 1rem;
+}

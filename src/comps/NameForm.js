@@ -3,9 +3,10 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Context from '../AppContext.js';
+import { getGithubUser } from '../apis/github';
 
 const NameForm = () => {
-  const [form, setForm] = useContext(Context.Form);
+  const [userData, setUserData] = useContext(Context.Form);
   const [validated, showValidation] = useState(false);
 
   const handleChange = (event) => {
@@ -17,9 +18,8 @@ const NameForm = () => {
     event.preventDefault();
     event.stopPropagation();
     if (form.checkValidity()) {
-      setForm({
-        name: form.formName.value,
-      });
+      getGithubUser(form.formName.value)
+        .then((obj) => setUserData(obj));
     }
   };
 
@@ -42,7 +42,7 @@ const NameForm = () => {
           </Form.Control.Feedback>
         </Form.Group>
         <Button variant="primary" type="submit">
-          Submit
+          Search
         </Button>
       </Form>
     </Card>
