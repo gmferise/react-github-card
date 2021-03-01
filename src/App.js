@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+import { useState} from 'react';
+import Context from './AppContext.js';
+
 import './App.css';
 
+import NameForm from './comps/NameForm';
+import GithubCard from './comps/GithubCard';
+
 function App() {
+  const [userData, setUserData] = useState({ message: 'Nothing to show...' });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App container">
+      <Context.Form.Provider value={[userData, setUserData]}>
+        <div className="row">
+          <div className="col" />
+          <div className="col-6">
+            <NameForm />
+          </div>
+          <div className="col" />
+        </div>
+        <div className="row">
+          <div className="col" />
+          <div className="col-6">
+            <GithubCard />
+          </div>
+          <div className="col" />
+        </div>
+      </Context.Form.Provider>
     </div>
   );
 }
