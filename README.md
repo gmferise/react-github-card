@@ -67,6 +67,7 @@ Example Final Product:
 Author: Gavin Ferise
 
 References: 
-* https://upmostly.com/tutorials/how-to-use-the-usecontext-hook-in-react
-* https://react-bootstrap.github.io/components/forms/#forms-validation
-* Regex in NameForm.js based on https://github.com/shinnn/github-username-regex
+1. https://upmostly.com/tutorials/how-to-use-the-usecontext-hook-in-react
+1. https://react-bootstrap.github.io/components/forms/#forms-validation
+1. Regex in NameForm.js based on https://github.com/shinnn/github-username-regex
+1. https://hackernoon.com/creating-callable-objects-in-javascript-d21l3te1

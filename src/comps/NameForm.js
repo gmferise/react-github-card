@@ -1,31 +1,32 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Context from '../AppContext.js';
-import { getGithubUser } from '../apis/github';
+
+import { getGithubUser, searchGithubUser } from '../apis/github';
+import { AutoForm } from '../store';
 
 const NameForm = () => {
-  const [userData, setUserData] = useContext(Context.Form);
-  const [validated, showValidation] = useState(false);
-
-  const handleChange = (event) => {
-    showValidation(true);
-  }
+  const { search, suggestions } = useContext(AutoForm.StateContext);
+  const dispatch = useContext(AutoForm.DispatchContext);
 
   const handleSubmit = (event) => {
-    const form = event.currentTarget;
     event.preventDefault();
     event.stopPropagation();
-    if (form.checkValidity()) {
-      getGithubUser(form.formName.value)
-        .then((obj) => setUserData(obj));
-    }
+    getGithubUser(event.currentTarget.formName.value)
+      .then((response) => dispatch({ type: AutoForm.SUBMIT, payload: response}));
+  };
+
+  const handleChange = (event) => {
+    searchGithubUser(event.target.value)
+      .then((response) => dispatch({ type: AutoForm.SUGGEST, payload: { suggestions: response, search: event.target.value } }))
   };
 
   return (
     <Card body>
-      <Form noValidate validated={validated} onSubmit={handleSubmit}>
+      <Form
+        noValidate
+        onSubmit={handleSubmit}>
         <Form.Group controlId="formName">
           <Form.Label>What profile do you want to view?</Form.Label>
           <Form.Control
