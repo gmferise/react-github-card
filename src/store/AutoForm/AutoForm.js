@@ -14,6 +14,7 @@ const actions = {
   TOGGLE: 'TOGGLE',
   SUGGEST: 'SUGGEST',
   SUBMIT: 'SUBMIT',
+  CLEAR: 'CLEAR',
 };
 
 // Reusable error handling
@@ -84,6 +85,13 @@ const reducer = (state, action) => {
         search: '',
         suggestions: [],
         result: action.payload,
+        visible: true,
+      };
+
+    case actions.CLEAR:
+      return {
+        ...state,
+        suggestions: [],
       };
 
     // Unknown action

@@ -16,6 +16,10 @@ class Debouncer extends Function {
   }
   
   // Creates a promise that calls the user's function
+  // promise resolves once user's function resolves
+  // promise will not resolve if the timeout never runs
+  // so calling this again will delete the old timeout
+  // so it can only run with the latest every this.duration
   _call(...args) {
     window.clearTimeout(this.timeout);
     this.timeout = -1;
@@ -26,7 +30,6 @@ class Debouncer extends Function {
         this.duration
       );
     });
-    
   }
 }
 

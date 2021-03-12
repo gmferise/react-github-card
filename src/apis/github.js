@@ -2,6 +2,7 @@ import Debouncer from '../debouncer.js';
 
 const howLong = (timestamp) => {
   const diff = timestamp - new Date().getTime();
+  if (diff <= 0) return 'now';
   const hours = Math.floor(diff / (1000 * 60 * 60));
   const mins = Math.floor(diff / (1000 * 60)) % 60;
   const secs = Math.floor(diff / (1000)) % 60;
