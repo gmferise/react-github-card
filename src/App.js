@@ -16,11 +16,14 @@ function App() {
       <AutoForm.DispatchContext.Provider value={dispatch}>
         <AutoForm.StateContext.Provider value={state}>
           <div className="row">
+            <div className="col" />
             <div className="col-6">
               <NameForm />
             </div>
+            <div className="col" />
           </div>
           <div className="row">
+            <div className="col" />
             <div className="col-6">
               <Card>
                 <div className="text-center">
@@ -30,15 +33,29 @@ function App() {
                   </div>
               </Card>
             </div>
+            <div className="col" />
           </div>
           <div className="row">
+            <div className="col" />
             <div className="col-6">
               {
-                state.visible ? (
+                state.visible && state.result.hasOwnProperty('name') ? (
                   <GithubCard result={state.result} />
                 ) : ''
               }
             </div>
+            <div className="col" />
+          </div>
+          <div className="row">
+            <div className="col" />
+            <div className="col-6">
+              {
+                state.visible && state.prev.hasOwnProperty('name')? (
+                  <GithubCard result={state.prev} />
+                ) : ''
+              }
+            </div>
+            <div className="col" />
           </div>
         </AutoForm.StateContext.Provider>
       </AutoForm.DispatchContext.Provider>

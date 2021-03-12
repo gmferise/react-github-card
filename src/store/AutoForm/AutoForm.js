@@ -6,6 +6,7 @@ const DispatchContext = createContext(() => {});
 const initialState = {
   visible: false,
   result: {},
+  prev: {},
   search: '',
   suggestions: [],
 };
@@ -85,6 +86,7 @@ const reducer = (state, action) => {
         search: '',
         suggestions: [],
         result: action.payload,
+        prev: state.result,
         visible: true,
       };
 
